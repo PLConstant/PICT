@@ -1,1 +1,1 @@
-REC't: Another image search app but this one is ~better~
+REC'T: Another image search app but this one is ~better~
