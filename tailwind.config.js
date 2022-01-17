@@ -5,10 +5,19 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
-    minWidth: {
-      '200': '200px'
+    extend: {
+      minWidth: {
+        '200': '200px',
+        '290': '290px'
+      },
+      minHeight: {
+        '290': '290px',
+        '3/4': '75%'
+      },
+      width: {
+        '9/50': '18%'
+      },
     },
-    extend: {},
   },
   plugins: [],
 }

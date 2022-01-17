@@ -1,21 +1,37 @@
 import SearchBar from './SearchBar'
+import { useContext, useState } from 'react'
+import { PageContext } from '../pages'
 
 const Header = () => {
+  const [pageDetails, updatePage] = useContext(PageContext)
+ 
+  // Search bar functionality will dispatch that a search has been executed, along with a parsed query string
+  // Home button will dispatch the return to our curated homepage
+ 
+const changePage = (direction) => {
+  direction === "next" ? 
+  updatePage({...pageDetails, page: pageDetails.page + 1}) :
+  pageDetails.page > 1 ?
+  updatePage({...pageDetails, page: pageDetails.page - 1}) :
+  null;
+}
+
   return (
     <div className='flex h-1/4 w-screen bg-slate-400 justify-between'>
-      <button className='w-56 border-2 bg-black text-white'>{"<-- Prev"}</button>
+     {/* fancy onHover work for later */}
+      <button 
+      onClick={() => changePage("back")}
+      className='w-56 border-2 bg-black text-white'>
+        {"<-- Prev"}
+        </button>
       <SearchBar/>
-      <button className='w-56 border-2 bg-black text-white'>{"Next -->"}</button>
+      <button 
+      onClick={() => changePage("next")}
+      className='w-56 border-2 bg-black text-white'>
+        {pageDetails.page}
+        </button>
     </div>
   )
 }
-
-/*
-This is my header component.
-I would like it to occupy the top quarter of the screen.
-At flex-start and flex-end we will have our pagination buttons. 
-occupying the full container height.
-
-*/
 
 export default Header
