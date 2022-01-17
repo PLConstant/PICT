@@ -7,7 +7,6 @@ function MyApp({ Component, pageProps }) {
     value={{
       refreshInterval: 0,
       fetcher: (resource, init) => fetch(resource, init).then(res => res.json()),
-      provider: () => new Map()
     }}
     >
       <Component {...pageProps} />

@@ -1,5 +1,5 @@
 import Header from '../components/Header'
-import Viewer from '../components/Viewer'
+import Viewer, { token } from '../components/Viewer'
 import { createContext, useState } from 'react'
 
 const defaultContext = {
@@ -8,11 +8,11 @@ const defaultContext = {
   query: null,
 }
 
-export const token = {
-  headers: {
-    "Authorization": process.env.NEXT_PUBLIC_PEXELS_API_KEY,
-  }
-};
+// export const token = {
+//   headers: {
+//     "Authorization": process.env.NEXT_PUBLIC_PEXELS_API_KEY,
+//   }
+// };
 
 export const PageContext = createContext();
 export default function Home(props) {
@@ -38,3 +38,6 @@ export async function getServerSideProps() {
     props: { data }
   }
 }
+
+
+// <div className='hidden'>

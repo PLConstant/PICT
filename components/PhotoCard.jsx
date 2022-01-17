@@ -1,7 +1,7 @@
 import Image from 'next/image'
 // Create a function
 const PhotoCard = ({ props }) => {
-  const { id, alt, photographer, photographer_url } = props;
+  const { id, alt, photographer, photographer_url, avg_color } = props;
   const pic = props.src.medium;
   // console.log('props in photoCard', props);
   return (
@@ -9,6 +9,7 @@ const PhotoCard = ({ props }) => {
       <Image
         src={pic}
         alt={alt}
+        loading="eager"
         layout="fill"
       />
     {/* it has an image that fills its container up to its side and top margins */}
