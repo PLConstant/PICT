@@ -28,7 +28,7 @@ const changePage = (direction) => {
       <button 
       onClick={() => changePage("next")}
       className='w-56 border-2 bg-black text-white'>
-        {pageDetails.page}
+        {"Next -->"}
         </button>
     </div>
   )
