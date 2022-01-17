@@ -38,6 +38,3 @@ export async function getServerSideProps() {
     props: { data }
   }
 }
-
-
-// <div className='hidden'>
