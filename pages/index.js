@@ -22,8 +22,8 @@ export default function Home(props) {
     <div className='flex-col h-screen max-h-auto w-screen items-center'>
       <PageContext.Provider value={[pageDetails, updatePage]}>
         <Header/>
-        <Viewer displayMode='hidden' firstRender={props.data} pageNum={pageDetails.page+1}/>
-        <Viewer displayMode='show' firstRender={props.data} pageNum={pageDetails.page}/>
+        <Viewer firstRender={props.data} pageNum={pageDetails.page}/>
+        <div className='hidden'><Viewer firstRender={props.data} pageNum={pageDetails.page+1}/></div>
       </PageContext.Provider>
     </div>
   )

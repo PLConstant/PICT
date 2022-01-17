@@ -1,7 +1,7 @@
 import SearchBar from './SearchBar'
 import { useContext, useState } from 'react'
 import { PageContext } from '../pages'
-
+// import backgroundImage from './white_marble.PNG'
 const Header = () => {
   const [pageDetails, updatePage] = useContext(PageContext)
  
@@ -17,7 +17,10 @@ const changePage = (direction) => {
 }
 
   return (
-    <div className='flex h-1/4 w-screen bg-slate-400 justify-between'>
+    <div 
+    className='flex h-1/4 w-screen bg-slate-400 justify-between'
+    // style={backgroundImage}
+    >
      {/* fancy onHover work for later */}
       <button 
       onClick={() => changePage("back")}
