@@ -34,7 +34,7 @@ const Viewer = ({ firstRender, pageNum}) => {
   
 
   return (
-    <div className={`flex flex-wrap border-4 border-gray-200/50 min-h-3/4 w-screen bg-slate-600 justify-around`}>
+    <div className={`flex flex-wrap border-4 border-gray-200/50 w-screen bg-slate-600 justify-around`}>
       {/* data will have at most ten items in photos. There is a conditional loading component in
           the event the user spams the 'next' button faster than useSWR is able to keep up. */}
       {data.photos ? data.photos.map((photo) => {

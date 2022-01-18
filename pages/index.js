@@ -5,6 +5,7 @@ import { createContext, useState } from 'react'
 /*
 Index is the applications main component. It is here that we create the initial 
 context object and wrap all dependant components with the context provider.
+See docs in Viewer component if you're wondering about the 'token' variable
 */
 
 // The context's initial state

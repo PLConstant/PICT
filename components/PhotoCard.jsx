@@ -6,27 +6,42 @@ const PhotoCard = ({ props }) => {
   const { alt, photographer, photographer_url, avg_color, src } = props
   const pic = src.medium;
 
+  console.log(photographer)
 
   return (
       <div 
-      className='flex flex-col rounded-t min-h-350 m-4 w-9/50 relative'
+      className='flex flex-col h-fit rounded m-4 w-9/50 relative'
       style={{backgroundColor: avg_color}}
       >
-        <Image
+        <img
+          className='mt-3 mx-3'
           src={pic}
           alt={alt}
-          loading="eager"
+          // loading="eager"
           layout="fill"
-          objectFit='contain'
+          object-fit='contain'
         />
         <div 
-        className='rounded-b h-10 w-9/50'
+        className='flex rounded-b h-10 w-full'
         style={{backgroundColor: avg_color}}
         >
-          <p>{'...hello?'}</p>
+          <a
+          href={photographer_url}
+          className='px-3 py-2'
+          >
+            {photographer}
+          </a>
         </div>
       </div>
   )
 }
 
 export default PhotoCard
+
+/*
+Strategy:
+
+The outer div is a flex container arranged as a column.
+That way the two children (Image, and credits) can be stacked
+on top of one another.
+*/
