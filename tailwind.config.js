@@ -1,3 +1,5 @@
+// const marble = require('./public/img/vercel.svg')
+
 module.exports = {
   mode: 'jit',
   content: [
@@ -12,6 +14,9 @@ module.exports = {
         '200': '200px',
         '290': '290px'
       },
+      // backgroundImage: {
+      //   'marble': marble
+      // },
       height: {
         '350': '350px'
       },

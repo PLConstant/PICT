@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import PhotoCard from './PhotoCard';
 import { useContext } from 'react';
 import { PageContext } from '../pages';
@@ -34,12 +35,17 @@ const Viewer = ({ firstRender, pageNum}) => {
   
 
   return (
-    <div className={`flex flex-wrap border-4 border-gray-200/50 w-screen bg-slate-600 justify-around`}>
+    <div className='flex flex-wrap border-1 min-h-full border-gray-200/50 w-screen bg-slate-600 justify-around relative'>
       {/* data will have at most ten items in photos. There is a conditional loading component in
           the event the user spams the 'next' button faster than useSWR is able to keep up. */}
       {data.photos ? data.photos.map((photo) => {
         return <PhotoCard key={photo.id.toString()} props={photo}/>
       }) : <p>Loading...</p>}
+     <Image 
+      src='/viewer.png'
+      className='z-0'
+      layout='fill'
+      />
     </div>
   )
 }

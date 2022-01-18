@@ -29,8 +29,14 @@ const handleSubmit = () => {
 };
 
   return(
-    <div className='flex flex-col w-3/4 justify-center items-center'>
-      <h1 className='text-xl text-center w-screen text-blue-900 font-bold self-center'>Welcome to REC&apos;t - An image search service but <i>better</i></h1>
+    <div 
+    className='flex flex-col justify-center items-center'
+    >
+      <p 
+      className='text-2xl text-center w-screen text-cyan-800/60 font-bold self-center'
+      >
+        PICT: images in an instant.
+      </p>
       <input 
       className='my-6 py-5 px-2 h-8 w-1/3 min-w-200 rounded' 
       value={query}
@@ -38,7 +44,14 @@ const handleSubmit = () => {
       onKeyPress={handleKeypress}
       />
       {pageDetails.display === 'search' ?
-      <button onClick={() => updatePage({...pageDetails, display: 'curated', page: 1})}>{'home'}</button> :
+        <img
+          src='/home_button.png'
+          alt='Home'
+          height={35}
+          width={35}
+          className='hover:bg-green-100/50 rounded-md p-1'
+          onClick={() => updatePage({...pageDetails, display: 'curated', page: 1})}
+        /> :
       null}
     </div>
   )

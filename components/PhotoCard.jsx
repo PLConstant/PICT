@@ -6,11 +6,10 @@ const PhotoCard = ({ props }) => {
   const { alt, photographer, photographer_url, avg_color, src } = props
   const pic = src.medium;
 
-  console.log(photographer)
 
   return (
       <div 
-      className='flex flex-col h-fit rounded m-4 w-9/50 relative'
+      className='flex flex-col h-fit rounded m-4 w-9/50 relative z-10 drop-shadow-md'
       style={{backgroundColor: avg_color}}
       >
         <img
