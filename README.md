@@ -34,4 +34,17 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 ## Tailwind
-This app has been dynamically styled with tailwind. 
+This app has been dynamically styled with Tailwind. 
+If you've used Tailwind before, you understand the benefits, and you're prepped for what you're about to see!
+If you've never used Tailwind...well buckle up. This codebase is going to seem unnecessarily verbose.
+Tailwind, while wordy, ultimately cuts down on the time it takes to develop your front end because it requires
+you to style your application as you go, using their abbrieviated key terms all inside the "className" property.
+After running npm install, you should be able to hover over any given term inside a component's "className" property
+and see a modal above your cursor which will tell you exactly how the Tailwind syntax translates to vanilla CSS.
+If you don't know Tailwind, this modal will be a saving grace in understanding how the application renders as it does.
+Tailwind also provides excellent documentation. If you look at their website and type what you wish to accomplish into
+their searchbar, you'll see an incredibly comprehensive and understandable explanation of how to translate the
+stylistic decision of your choosing into Tailwind syntax. Quickly, at that.
+And one final note about Tailwind - Tailwind comes out of the box with limited options. However you can leverage 
+tailwind.config.js to add specific css shorthand into Tailwind. I did so on a few occasions and if you read the file 
+it should prove self explanitory.

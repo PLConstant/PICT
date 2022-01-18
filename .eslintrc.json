@@ -1,3 +1,4 @@
 {
   "extends": ["next/babel","next/core-web-vitals"]
 }
+// Next.js' eslint config is Airbnb style linting by default

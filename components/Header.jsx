@@ -1,13 +1,15 @@
 import SearchBar from './SearchBar'
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { PageContext } from '../pages'
 
 const Header = () => {
+  // destructure the context object and the function needed to modify it
+  // from the context provider (via useContext hook)
   const [pageDetails, updatePage] = useContext(PageContext)
  
-  // Search bar functionality will dispatch that a search has been executed, along with a parsed query string
-  // Home button will dispatch the return to our curated homepage
  
+ // Pagination function. Updates the context object to increment
+ // or decrement the page number property.
 const changePage = (direction) => {
   direction === "next" ? 
   updatePage({...pageDetails, page: pageDetails.page + 1}) :
@@ -16,24 +18,28 @@ const changePage = (direction) => {
   null;
 }
 
+
+  // returns the pagination button components whose  onClick's
+  // both point to changePage. Passing in 'next' or 'back' accordingly.
+  // Also renders the SearchBar component between the buttons.
   return (
     <div 
     className='flex h-1/4 w-screen bg-slate-400 justify-between'
     >
-     {/* fancy onHover work for later */}
+     
       <button 
       onClick={() => changePage("back")}
       className='w-56 border-2 bg-black text-white'>
-        {"<-- Prev"}
-        </button>
+      {"<-- Prev"}
+      </button>
 
       <SearchBar/>
 
       <button 
       onClick={() => changePage("next")}
       className='w-56 border-2 bg-black text-white'>
-        {"Next -->"}
-        </button>
+      {"Next -->"}
+      </button>
         
     </div>
   )

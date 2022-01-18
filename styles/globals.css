@@ -2,3 +2,7 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+/* 
+For Next.js integration, Tailwind replaces all lines of globals.css.
+That way all Tailwind styles are accessible to any component.
+*/

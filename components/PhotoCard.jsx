@@ -1,5 +1,7 @@
 import Image from 'next/image'
-// Create a function
+
+// API photo object holds all these properties and more.
+// Feel free to console.log(props) to view other options.
 const PhotoCard = ({ props }) => {
   const { alt, photographer, photographer_url, avg_color, src } = props
   const pic = src.medium;
