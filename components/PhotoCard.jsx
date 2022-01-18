@@ -26,9 +26,17 @@ const PhotoCard = ({ props }) => {
         >
           <a
           href={photographer_url}
-          className='px-3 py-2'
+          target="_blank"
+          className='pl-2 pr-1 py-1 my-1 mr-0 ml-3 rounded-l-md bg-stone-50/40 underline'
           >
             {photographer}
+          </a>
+          <a href={photographer_url} target="_blank">
+            <img 
+                src='/pexels_logo.png' 
+                layout='fill'
+                className='pl-1 pr-0 my-1 h-8 w-9 rounded-r-md bg-stone-50/40'
+              />
           </a>
         </div>
       </div>

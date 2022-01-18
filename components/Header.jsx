@@ -32,7 +32,7 @@ const buttonTheme = pageDetails.page > 1 ?
     >
       <button 
       onClick={() => changePage("back")}
-      className={`w-56 rounded-r-xl ${buttonTheme} text-amber-50 text-3xl z-10`}>
+      className={`w-56 ${buttonTheme} text-amber-50 text-3xl z-10`}>
       Prev <p className='text-5xl'>⇦</p>
       </button>
       <div className='w-3/4 z-10 self-center' >
@@ -40,12 +40,13 @@ const buttonTheme = pageDetails.page > 1 ?
       </div>
       <button 
       onClick={() => changePage("next")}
-      className='w-56 rounded-l-xl hover:border-2 bg-zinc-400/60 text-amber-50 text-3xl hover:bg-amber-100/20 hover:text-slate-700 hover:drop-shadow-md z-10'>
+      className='w-56 hover:border-2 bg-zinc-400/60 text-amber-50 text-3xl hover:bg-amber-100/20 hover:text-slate-700 hover:drop-shadow-md z-10'>
       Next <p className='text-5xl'>⇨</p>
       </button> 
       <Image 
       src='/header.png'
       className='z-0'
+      objectFit='cover'
       layout='fill'
       />
     </div>
