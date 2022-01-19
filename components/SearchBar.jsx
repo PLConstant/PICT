@@ -19,21 +19,25 @@ const SearchBar = () => {
   if (e.key === 'Enter') {
     setQuery(query = query.replace(' ', '+'))
     handleSubmit();
+    setQuery(query = query.replace('+', ' '))
   }
 };
 
 const handleSubmit = () => {
   updatePage({display: 'search', page: 1, query: query})
-  console.log(pageDetails)
-  setQuery("");
 };
+
+const homeClick = () => {
+  updatePage({...pageDetails, display: 'curated', page: 1});
+  setQuery("");
+}
 
   return(
     <div 
     className='flex flex-col justify-center items-center'
     >
       <p 
-      className='text-2xl text-center w-screen text-cyan-800/60 font-bold self-center'
+      className='text-2xl text-center w-full text-cyan-800/60 font-bold self-center'
       >
         PICT: images in an instant.
       </p>
@@ -50,7 +54,7 @@ const handleSubmit = () => {
           height={35}
           width={35}
           className='hover:bg-green-100/50 rounded-md p-1'
-          onClick={() => updatePage({...pageDetails, display: 'curated', page: 1})}
+          onClick={homeClick}
         /> :
       null}
     </div>

@@ -3,6 +3,7 @@ import PhotoCard from './PhotoCard';
 import { useContext } from 'react';
 import { PageContext } from '../pages';
 import useSWR from 'swr'
+import Doggo from './ErrorDog';
 
 
 // Pexels API requires you send your fetch with an auth header whose value is your API key.
@@ -14,7 +15,7 @@ export const token = {
 };
 
 // firstRender is the props object getServerSideProps generates on the application's first load.
-const Viewer = ({ firstRender, pageNum}) => {
+const Viewer = ({ firstRender, pageNum }) => {
   
 
   // Viewer never modifies the context object, so we only need to destructure the object 
@@ -32,15 +33,17 @@ const Viewer = ({ firstRender, pageNum}) => {
   
   // Here is our mastermind. If you've never seen it before, read the short novel at the bottom of this file.
   const { data, error } = useSWR([URI, token], {fallbackData: firstRender});
+  if (error) console.log(error);
   
-
   return (
-    <div className='flex flex-wrap border-1 min-h-full border-gray-200/50 w-screen bg-slate-600 justify-around relative'>
+    <div className='flex flex-wrap min-h-full border-1 border-gray-200/50 w-screen bg-slate-600 justify-around relative'>
       {/* data will have at most ten items in photos. There is a conditional loading component in
           the event the user spams the 'next' button faster than useSWR is able to keep up. */}
-      {data.photos ? data.photos.map((photo) => {
-        return <PhotoCard key={photo.id.toString()} props={photo}/>
-      }) : <p>Loading...</p>}
+      {data.photos && data.photos.length ? 
+       data.photos.map((photo) => <PhotoCard key={photo.id.toString()} props={photo}/>) : 
+       data.photos ? 
+       <Doggo/> :
+       <p>Loading...</p>}
      <Image 
       src='/viewer.png'
       className='z-0'

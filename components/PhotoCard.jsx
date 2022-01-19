@@ -9,7 +9,7 @@ const PhotoCard = ({ props }) => {
 
   return (
       <div 
-      className='flex flex-col h-fit rounded m-4 w-9/50 relative z-10 drop-shadow-md'
+      className='flex flex-col h-fit rounded m-4 w-fit relative z-10 drop-shadow-lg'
       style={{backgroundColor: avg_color}}
       >
         <img
