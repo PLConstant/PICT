@@ -9,6 +9,7 @@ To learn more about Next.js, take a look at the following resources:
 
 
 ## Getting Started
+(this readme was written with .md syntax for github-optimized presentability. things wrapped in backticks or brackets/parens are formatting. for instance do not type \```bash npm install``` into your console. just type npm install.)
 
 First and foremost, run 
 ```bash

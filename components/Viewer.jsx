@@ -42,6 +42,7 @@ const Viewer = ({ firstRender, pageNum }) => {
       {data.photos && data.photos.length ? 
        data.photos.map((photo) => <PhotoCard key={photo.id.toString()} props={photo}/>) : 
        data.photos ? 
+      //  a 204 error page if a user's search yields no results
        <Doggo/> :
        <p>Loading...</p>}
      <Image 

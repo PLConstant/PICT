@@ -16,7 +16,6 @@ const PhotoCard = ({ props }) => {
           className='mt-3 mx-3'
           src={pic}
           alt={alt}
-          // loading="eager"
           layout="fill"
           object-fit='contain'
         />
