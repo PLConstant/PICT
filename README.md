@@ -20,7 +20,7 @@ Next, add a .env.local file into the root directory.
 This is where you're going to add your API key to gain access to Pexels.
 On line 1 of .env.local paste ```NEXT_PUBLIC_PEXELS_API_KEY=``` followed by your API key. You should not wrap the API key in quotations.
 
-After this the setup is finished and you should be able to type
+After this the setup is finished you should be able to type
 ```bash
 npm run dev
 ```
