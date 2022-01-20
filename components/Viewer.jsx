@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import PhotoCard from './PhotoCard';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { PageContext } from '../pages';
 import useSWR from 'swr'
 import Doggo from './ErrorDog';
@@ -17,11 +17,10 @@ export const token = {
 // firstRender is the props object getServerSideProps generates on the application's first load.
 const Viewer = ({ firstRender, pageNum }) => {
   
-
   // Viewer never modifies the context object, so we only need to destructure the object 
   // and we can ignore the function needed to modify it.
-  const [ pageDetails ] = useContext(PageContext)
-  const { display, query,} = pageDetails
+  const [ pageDetails, updatePage ] = useContext(PageContext)
+  const { display, query, pageLimit } = pageDetails
 
   // This ternary allows us to switch between the curated and search API endpoints.
   const route = display === 'search' ? 
@@ -33,8 +32,15 @@ const Viewer = ({ firstRender, pageNum }) => {
   
   // Here is our mastermind. If you've never seen it before, read the short novel at the bottom of this file.
   const { data, error } = useSWR([URI, token], {fallbackData: firstRender});
-  if (error) console.log(error);
+  if (error) console.log(error)
   
+  if (data.photos && data.photos.length) {
+    const newLimit = Math.ceil(data.total_results / 10)
+    if (newLimit !== pageLimit) {
+      updatePage({...pageDetails, pageLimit: newLimit})
+    }
+  }
+
   return (
     <div className='flex flex-wrap min-h-full border-1 border-gray-200/50 w-screen bg-slate-600 justify-around relative'>
       {/* data will have at most ten items in photos. There is a conditional loading component in

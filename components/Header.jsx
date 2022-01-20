@@ -4,24 +4,29 @@ import { PageContext } from '../pages'
 import Image from 'next/image'
 
 const Header = () => {
+  
   // destructure the context object and the function needed to modify it
   // from the context provider (via useContext hook)
   const [pageDetails, updatePage] = useContext(PageContext)
- 
+  const { page, pageLimit } = pageDetails;
  
  // Pagination function. Updates the context object to increment
  // or decrement the page number property.
 const changePage = (direction) => {
-  direction === "next" ? 
-  updatePage({...pageDetails, page: pageDetails.page + 1}) :
-  pageDetails.page > 1 ?
-  updatePage({...pageDetails, page: pageDetails.page - 1}) :
+  direction === "next" && page < pageLimit? 
+  updatePage({...pageDetails, page: page + 1}) :
+  page > 1 ?
+  updatePage({...pageDetails, page: page - 1}) :
   null;
 }
 
-const buttonTheme = pageDetails.page > 1 ?
-'bg-zinc-400/60 hover:border-2 hover:bg-amber-100/20 hover:text-slate-700 hover:drop-shadow-md':
-'bg-zinc-400/20 hover:bg-transparent hover:text-transparent hover:cursor-default';
+const buttonTheme = {
+  canClick : 'bg-zinc-400/60 hover:border-2 hover:bg-amber-100/20 hover:text-slate-700 hover:drop-shadow-md',
+  cantClick: 'bg-zinc-400/20 hover:bg-transparent hover:text-transparent hover:cursor-default'
+}
+
+const enableNext = page < pageLimit ? buttonTheme.canClick : buttonTheme.cantClick;
+const enableBack = page > 1 ? buttonTheme.canClick : buttonTheme.cantClick;
 
   // returns the pagination button components whose onClick's
   // both point to changePage. Passing in 'next' or 'back' accordingly.
@@ -32,7 +37,7 @@ const buttonTheme = pageDetails.page > 1 ?
     >
       <button 
         onClick={() => changePage("back")}
-        className={`w-56 ${buttonTheme} text-amber-50 text-3xl z-10`}
+        className={`w-56 text-amber-50 text-3xl z-10 ${enableBack}`}
       >
         Prev <p className='text-5xl'>⇦</p>
       </button>
@@ -41,7 +46,7 @@ const buttonTheme = pageDetails.page > 1 ?
       </div>
       <button 
         onClick={() => changePage("next")}
-        className='w-56 hover:border-2 bg-zinc-400/60 text-amber-50 text-3xl hover:bg-amber-100/20 hover:text-slate-700 hover:drop-shadow-md z-10'
+        className={`w-56 text-amber-50 text-3xl z-10 ${enableNext}`}
       >
         Next <p className='text-5xl'>⇨</p>
       </button> 

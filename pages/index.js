@@ -12,7 +12,8 @@ See docs in Viewer component if you're wondering about the 'token' variable
 const defaultContext = {
   display: 'curated',
   page: 1,
-  query: null,
+  pageLimit: 800,
+  query: null
 }
 // Export to make context available 
 export const PageContext = createContext();
@@ -31,7 +32,9 @@ export default function Home(props) {
         <Viewer firstRender={props.data} pageNum={pageDetails.page}/>
         {/* The following line is a major source of what makes this app so fast. 
             see the comments inside the Viewer component for more details. */}
-        <div className='hidden'><Viewer firstRender={props.data} pageNum={pageDetails.page+1}/></div>
+        {pageDetails.pageLimit > 1 ?
+        <div className='hidden'><Viewer firstRender={props.data} pageNum={pageDetails.page+1}/></div> :
+        null}
       </PageContext.Provider>
     </div>
   )
