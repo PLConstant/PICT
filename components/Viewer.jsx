@@ -82,3 +82,66 @@ Finally, useSWR will return the fallbackData as its data while it takes the time
 fulfill promises. This is why our application has API images rendered as soon as the client
 accesses it. 
 */
+
+
+
+/*
+How do I think I can structure the app to slide my divs like I want to?
+
+The page loads. A div is in focus. It is assigned photos and keeps them.
+"Next" is clicked; The div begins to slide off screen to the left, revealing the "next page".
+The animation finishes and the div immediately re-appears, also rendering the "next" page. 
+There is no flicker, the user is unaware of the layer piling.
+The animation finishes and the under-layer switches to the next page.
+
+** "next" calls are debounced for the duration of the animation **
+-- gotta learn about throttling and debouncing to make this production grade code --
+
+  THERE is one viewer component, and one render component.
+The viewer has two layers. The Background layer which is a fetch to the NEXT page.
+
+We have the 'Slider'layer which will preserve currentState and slide it off left or right.
+We have 'Background' layer which will inherit next or prev onClick.
+The 'Next' layer which will useSWR to fetch the next page.
+The 'Prev' layer which will useSWR to fetch the previous page.
+
+We useState to hold photosets.
+one for thesePhotos, one for nextPhotos.
+changeThesePhotos(nextPhotos)
+getNextPhotos(useSWR(url blah blah page + 1, token)) <-- data data multiline func
+
+getServerSideProps = (): props => {get and return page 1}
+const [thesePhotos, changePhotos] = useState(props)
+const [prevPhotos, getPrevious] = useState(props)
+const [nextPhotos, getNext] = useState(useSWR(page+1))
+
+getPrevious(() => {
+  page > 1 ?
+  return { data } = useSWR(page-1) :
+  nothing;
+})
+
+getNext(() => {
+  page < lastPage ?
+  return { data } = useSWR(page+1) :
+  nothing;
+})
+
+changePage = (direction) => {
+  direction === next ?
+    page < lastPage ? changePhotos(nextPhotos) : null;
+    page > 1 ? changePhotos(prevPhotos) : null;
+}
+
+ON PAGINATE!!! 
+paginate(next) =  {
+  -Background layer inherits nextPhotos.
+  -getPrevious & getNext are triggered - functions are then debounced for 333ms
+  -Slider begins moving to the left, animation transition for 333ms
+  -Wait 330 ms and then Slider = changePhotos(nextPhotos) 
+  -debounce expires and Slider sneakily rerenders on top of Background
+  -prevPhotos and nextPhotos are queued and everything is set to be triggered again
+}
+
+
+*/
